@@ -1,63 +1,48 @@
+# HubSecure Team (KYC prototype)
 
-# HubSecure XRPL internal API
+[![Hubsecure Team](https://img.youtube.com/vi/ymRMJo8ZDQs/0.jpg)](https://www.youtube.com/watch?v=ymRMJo8ZDQs)
 
-This API helps hubsecure to Upload/Download files, Encrypt/Decrypt Files and Create Encrypted NFT inside XRPL.
+# Demo
 
-## Postman Collection
+[![Hubsecure KYC Demo](https://img.youtube.com/vi/znTvWGfGfAc/0.jpg)](https://www.youtube.com/watch?v=znTvWGfGfAc)
 
-Can be found in `postman_collection` Import it to your postman and set host.
 
-## What This API does not handle?
+# Deployment
+
+#### Note
+
+* Change .env files as required on each app.
+
+```sh
+$ chmod +x *.sh
+$ ./deploy.sh
+```
+
+# xrpl_api
+
+This API helps to Upload/Download files, Encrypt/Decrypt Files and Create Encrypted NFT inside XRPL.
+
+#### What This API does not handle?
 
 * Any User Data
 * Any Unencrypted files in local storage
 * Host Customers XRPL Wallet data [Seed, Sequence]
 * Host Encryption / Decryption key
 
-## What This API does?
+#### What This API does?
 
-* Handle File Uploads and Provide UUID called `document_uuid`
-* Handle File Upload to IPFS
-* Handle Temporary file deletions
-* Handle File Compression and Encryption
-* Handle Encryption key generation and Securing Encryption key in NFT 
-* Handle NFT minting in XRPL 
+* Handles File Uploads and Provide UUID called `document_uuid`
+* Handles File Upload to IPFS
+* Handles Temporary file deletions
+* Handles File Compression and Encryption
+* Handles Encryption key generation and Securing Encryption key in NFT 
+* Handles NFT minting in XRPL 
+* Handles KYC document verification using [https://www.idanalyzer.com] api.
+* Handles KYC document encryption and NFT minting.
 
-## Required Inputs 
+# kyc_app
 
-* `app_encryption_key` Is Global Application encryption key, that needs to be provided from `HubSecure Main Backend`
-* `client_encryption_key` Is Uniqe Set of Sentences that is generated for every Customer and stored in `HubSecure Main Backend`
-* `client_wallet_seed` Is Customers XRPL Wallet seed that will be generated with This API But will be stored and provided from `HubSecure Main Backend`
-* `client_wallet_seq` : Is Customers XRPL Wallet Sequence that will be generated with This API But will be stored and provided from `HubSecure Main Backend`
-* `document_uuid` Will be provided from this API when uploading new file. This needs to be stored and provided from `HubSecure Main Backend` for future requests.
-
-## Defaults
-
-```
-{
-    "application" : {
-        "app_encryption_key" : "SaOMTDoNigGV//4yirHCQUNDktGqW86+"
-    },
-    "client" : {
-        "client_encryption_key" : "GHIM KLUORDS MCDOOTTS THRANT SCHLOEB",
-        "client_wallet_seed" : "sEdTsxgEsgatzanLPKA6vJcTeFwSom2",
-        "client_wallet_seq" : "36191320"
-    }
-}
-```
-
-## Default XRP Client Wallet
-
-```
-https://testnet.xrpl.org/accounts/rGnMFAFQaWJerxGpUsjoHZRB4nF2RvbQJo
-```
-
-## Default XRPL API IP
-
-```
-http://139.162.148.222:8005
-```
-
-## Video How To :
-
-[![XRPL API Usage How To](https://img.youtube.com/vi/b4HATqEIL2Y/0.jpg)](https://www.youtube.com/watch?v=b4HATqEIL2Y)
+* A simple interface to register users
+* Users can Upload their KYC documents
+* Users can Verify their KYC Document
+* Users can mint NFT of KYC Verified Documents
